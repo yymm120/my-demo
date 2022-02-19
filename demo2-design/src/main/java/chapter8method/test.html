@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>返回结果基础类</h1>
+
+ <style type="text/css">
+          table
+          {
+                  border-collapse: collapse;
+                  border: none;
+              }
+          th
+          {
+                  border: solid #000 1px;
+              }
+          td
+          {
+                  border: solid #000 1px;
+              }
+      </style>
+ <table cellspacing=1>
+     <thead  bgcolor="#a1a1a1" >
+  <tr>
+          <th>字段</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>描述</th>
+      </tr>
+ </thead>
+     <tbody>
+  <tr>
+          <td>success</td>
+          <td>成功标识</td>
+          <td>boolean</td>
+          <td>true:成功， false:失败</td>
+      </tr>
+  <tr>
+          <td>resultMessage</td>
+          <td>返回信息</td>
+          <td>String</td>
+          <td>对应返回码的说明</td>
+      </tr>
+  <tr>
+          <td>resultCode</td>
+          <td>返回码</td>
+          <td>String</td>
+          <td>返回码 {@link ErrorCode}</td>
+      </tr>
+ </tbody>
+     </table>
+</body>
+</html>
