@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -37,6 +38,7 @@ public class EndOption {
 		list.add(new User(2, "B"));
 		list.add(new User(3, "C"));
 		list.add(new User(4, "D"));
+		new Scanner(System.in).nextInt();
 	}
 
 	/**
