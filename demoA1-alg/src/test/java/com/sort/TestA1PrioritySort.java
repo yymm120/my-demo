@@ -43,6 +43,7 @@ public class TestA1PrioritySort {
 	 */
 	@Test
 	void test_thenComparing_sort(){
+
 		int compare = Boolean.compare(true, false);
 		System.out.println(compare);
 
