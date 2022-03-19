@@ -51,6 +51,7 @@ public class EndOption {
 
 	/**
 	 * collect
+	 * @see MidOptions#test7Reduce1()
 	 */
 	@Test
 	void test2() {
@@ -68,6 +69,9 @@ public class EndOption {
 //				.collect(Collectors.toMap(User::getName, User::getAge));
 		Map<String, User> map2 = list.stream()
 				.collect(Collectors.toMap(User::getName, Function.identity(), (k1, k2) -> k1));
+
+		// ④ reduce 也是一个end操作
+
 		System.out.println(map);
 		System.out.println(map2);
 	}
