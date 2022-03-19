@@ -14,4 +14,20 @@ public class Student {
 	private int age;
 	private String sex;
 
+	public void abc(){
+
+	}
+
+	public void test(){
+		//
+	}
+
+	public void test1(){
+		//
+	}
+
+	public void test2(){
+
+	}
+
 }
