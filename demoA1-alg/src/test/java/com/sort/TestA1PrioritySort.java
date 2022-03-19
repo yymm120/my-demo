@@ -1,15 +1,11 @@
 package com.sort;
 
 import com.sort.data.Student;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import lombok.var;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.comparator.Comparators;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
@@ -52,6 +48,24 @@ public class TestA1PrioritySort {
 				Boolean.compare(o1.isCallForPricing(), o2.isCallForPricing())));
 		list.forEach(System.out::println);
 	}
+
+	@Test
+	void test_nullSort(){
+		list.add(null);
+		list.sort(Comparator.nullsFirst((o1, o2) -> Boolean.compare(o1.isDiscontinued(), o2.isCallForPricing())));
+		list.forEach(System.out::println);
+		System.out.println(list.size());
+		list.sort(Comparator.nullsLast((o1, o2) -> Boolean.compare(o1.isDiscontinued(), o2.isCallForPricing())));
+		list.forEach(System.out::println);
+	}
+
+	@Test
+	void test_Comparing(){
+		// ComparingInt
+		Comparator<Integer> sorted = Comparator.comparingInt("a"::indexOf);
+	}
+
+
 
 
 	/**
