@@ -28,4 +28,5 @@ public class Demo {
             System.out.println(user.getUserName());
         }
     }
+
 }
