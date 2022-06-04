@@ -5,6 +5,23 @@
 
 <!--核心配置文件-->
 <configuration>
+    <!-- 引入外部properties文件 -->
+    <properties resource="database.properties"/>
+    <!-- 设置 -->
+    <settings>
+        <!-- 映射级别 -->
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!-- 日志 -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <!-- 别名 -->
+    <typeAliases>
+        <!--单个类声明别名-->
+        <!-- <typeAlias type="com.smbms.pojo.User" alias="User" /> -->
+
+        <!-- 扫描包, 自动将保重的每个类声明别名, 别名为类名, 不区分大小写 -->
+        <package name="com.smbms.pojo"/>
+    </typeAliases>
     <!--数据库环境-->
     <environments default="development">
         <environment id="development">
@@ -12,10 +29,10 @@
             <transactionManager type="JDBC"/>
             <!--数据源-->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/smbms?useUnicode=true&amp;characterEncoding=UTF-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
