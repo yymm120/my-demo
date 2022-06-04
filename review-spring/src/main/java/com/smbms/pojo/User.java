@@ -28,4 +28,7 @@ public class User {
     private Integer modifyBy;     //更新者
     private Date modifyDate;   //更新时间
     private String userRoleName; //角色名称
+
+    /** association 定义一对一关系 */
+    private Role role;
 }

@@ -56,9 +56,36 @@
     <select id="findAllResultMap" resultMap="userMap">
         SELECT u.*, r.roleName FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
     </select>
+    <!--Demo6.1 association 一对一, 查询所有用户对应的角色信息-->
+    <select id="findAllUserForRoleInfo" resultMap="userAndRoleMap">
+        SELECT *,
+               r.id rId,
+               r.createBy rCreateBy,
+               r.creationDate rCreationDate,
+               r.modifyBy rModifyBy,
+               r.modifyDate rModifyDate
+        FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
+    </select>
+
+    <!--Demo5.4 resultMap - userMap-->
     <resultMap id="userMap" type="User">
         <!-- db中roleName字段, 映射为User中的userRoleName字段 -->
         <result column="roleName" property="userRoleName"/>
+    </resultMap>
+    <!-- Demo6.1 association子元素, 定义一对一关系-->
+    <resultMap id="RoleMap" type="Role">
+        <!-- 子元素id: 通常为主键id, 定义该子元素可以查询提高性能 -->
+        <id column="rId" property="id"/>
+        <!-- 将查询结果 rFieldName字段 映射到Role类中的property属性-->
+        <result column="rCreateBy" property="createBy"/>
+        <result column="rCreationDate" property="creationDate"/>
+        <result column="rModifyBy" property="modifyBy"/>
+        <result column="rModifyDate" property="modifyDate"/>
+    </resultMap>
+    <resultMap id="userAndRoleMap" type="User">
+        <id column="id" property="id"/>
+        <!-- association映射数据到一个对象上-->
+        <association property="role" resultMap="RoleMap"/>
     </resultMap>
 
 </mapper>

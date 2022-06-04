@@ -37,4 +37,6 @@ public interface UserMapper {
 
     /** Demo5.4 resultMap 自定义映射结果*/
     List<User> findAllResultMap();
+
+    List<User> findAllUserForRoleInfo();
 }
