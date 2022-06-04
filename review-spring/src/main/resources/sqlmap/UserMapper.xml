@@ -13,4 +13,29 @@
         SELECT * FROM smbms_user
     </select>
 
+    <!-- 1. 传一个简单类型 : 通过 #{参数名}-->
+    <select id="findList1" resultType="User">
+        SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%',#{userName},'%')
+    </select>
+
+    <!-- 2. 传多个简单类型 - 下标 : 通过 #{参数下标}-->
+    <select id="findList2" resultType="User">
+        SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%', #{param1}, '%') AND phone = #{param2}
+    </select>
+
+    <!-- 2. 传多个简单类型 - 注解 : 通过 #{注解参数名}-->
+    <select id="findList3" resultType="User">
+        SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%',#{userName},'%') AND phone = #{phone}
+    </select>
+
+    <!-- 3. 传一个复杂类型 - Map : 通过 #{key}-->
+    <select id="findList4" resultType="User">
+        SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%', #{name}, '%') AND phone = #{phone}
+    </select>
+
+    <!-- 3. 传一个复杂类型 - JavaBean : 通过 #{fieldName}-->
+    <select id="findList5" resultType="User">
+        SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%', #{userName}, '%') AND phone = #{phone}
+    </select>
+
 </mapper>
