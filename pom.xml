@@ -15,6 +15,7 @@
         <module>demo9-mq</module>
         <module>demoA1-alg</module>
         <module>review-spring</module>
+        <module>plantuml</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
