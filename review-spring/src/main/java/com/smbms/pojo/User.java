@@ -27,5 +27,5 @@ public class User {
     private Date creationDate; //创建时间
     private Integer modifyBy;     //更新者
     private Date modifyDate;   //更新时间
-    private String roleName; //角色名称
+    private String userRoleName; //角色名称
 }

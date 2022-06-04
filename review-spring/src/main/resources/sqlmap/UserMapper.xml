@@ -38,4 +38,27 @@
         SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%', #{userName}, '%') AND phone = #{phone}
     </select>
 
+    <!-- Demo5.1 CRUD - create, id=addUser-->
+    <insert id="addUser">
+        INSERT INTO smbms_user(userName, userCode, userPassword) VALUES(#{userName}, #{userCode}, #{userPassword})
+    </insert>
+
+    <!-- Demo5.2 CRUD - delete, id=delUser-->
+    <delete id="delUser">
+        DELETE FROM smbms_user WHERE id=#{id}
+    </delete>
+    <!-- Demo5.3 CRUD - update, id=updUser-->
+    <update id="updUser">
+        UPDATE smbms_user SET userName=#{userName}, userCode=#{userCode}, userPassword=#{userPassword} WHERE id=#{id}
+    </update>
+
+    <!--Demo5.4 自定义结果映射, resultMap-->
+    <select id="findAllResultMap" resultMap="userMap">
+        SELECT u.*, r.roleName FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
+    </select>
+    <resultMap id="userMap" type="User">
+        <!-- db中roleName字段, 映射为User中的userRoleName字段 -->
+        <result column="roleName" property="userRoleName"/>
+    </resultMap>
+
 </mapper>

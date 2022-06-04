@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /** 传递参数的方式 */
-public class Demo3 {
+public class Demo4 {
     public static void main(String[] args) throws IOException {
         // 1. 传一个简单参数
         test1_one_arg();

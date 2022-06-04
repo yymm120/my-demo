@@ -25,4 +25,16 @@ public interface UserMapper {
 
     /** 3. 传一个复杂参数 - JavaBean */
     List<User> findList5(User user);
+
+    /** Demo5.1 CRUD - create */
+    int addUser(User user);
+
+    /** Demo5.2 CRUD - delete */
+    int delUser(int id);
+
+    /** Demo5.3 CRUD - update*/
+    int updUser(User user);
+
+    /** Demo5.4 resultMap 自定义映射结果*/
+    List<User> findAllResultMap();
 }
