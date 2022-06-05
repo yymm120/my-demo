@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserMapper">
+    <!--
+        开启二级缓存，仅对当前SQL映射文件下的所有查询语句生效
+        select标签属性useCache="false"取消使用缓存
+    -->
+    <cache flushInterval="60000" size="512" readOnly="true"/>
 
     <select id="count" resultType="int">
         SELECT COUNT(*) FROM smbms_user
