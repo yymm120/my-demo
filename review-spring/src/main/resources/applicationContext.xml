@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!--SpringDemo1 - IOC(DI) scope: singleton(默认单例), prototype(多例原型)-->
+    <!--IOC,创建Hello对象存入Spring容器，唯一标识为hello-->
+    <bean id="user" class="com.smbms.pojo.User" scope="singleton">
+        <!--设置属性值-->
+        <property name="userName" value="罗" />
+    </bean>
+    <bean id="role" class="com.smbms.pojo.Role" scope="prototype"/>
+</beans>
