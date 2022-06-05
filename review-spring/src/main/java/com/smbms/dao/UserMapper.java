@@ -26,28 +26,39 @@ public interface UserMapper {
     /** 3. 传一个复杂参数 - JavaBean */
     List<User> findList5(User user);
 
-    /** com.demomybatis.Demo5.1 CRUD - create */
+    /** Demo5.1 CRUD - create */
     int addUser(User user);
 
-    /** com.demomybatis.Demo5.2 CRUD - delete */
+    /** Demo5.2 CRUD - delete */
     int delUser(int id);
 
-    /** com.demomybatis.Demo5.3 CRUD - update*/
+    /** Demo5.3 CRUD - update*/
     int updUser(User user);
 
-    /** com.demomybatis.Demo5.4 resultMap 自定义映射结果*/
+    /** Demo5.4 resultMap 自定义映射结果*/
     List<User> findAllResultMap();
 
-    /* com.demomybatis.Demo6 association 定义一对一关系*/
+    /** Demo6 association 定义一对一关系*/
     List<User> findAllUserForRoleInfo();
 
-    /** com.demomybatis.Demo7 collection 定义一对多关系 */
+    /** Demo7 collection 定义一对多关系 */
     List<User> findAllUserForAddresses();
 
-    /* Demo9 动态SQL - <if> */
+    /** Demo9 动态SQL - <if> */
     List<User> list1(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
-    /* Demo9 动态SQL - <where> <if>*/
+    /** Demo9 动态SQL - <where> <if>*/
     List<User> list2(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
 
+    /** Demo10 动态SQL - <set> update*/
     int updateUserForDynamicSQL(User user);
+
+    /** Demo11.1 动态SQL - <trim> 代替 <where><if> */
+    List<User> list_trim(@Param("userName") String userName, @Param("userRole") Integer userRole);
+
+
+    /** Demo11.2 动态SQL - <trim> 代替 <set> */
+    int updateUser_trim(User user);
+
+    /** Demo11.3 动态SQL - <trim> 执行指定内容*/
+    int addUser_trim(User user);
 }

@@ -164,4 +164,67 @@
             </set>
             WHERE id=#{id}
     </update>
+
+    <!-- Demo11.1 Mybatis 动态SQL - trim 代替 where if
+            - prefix 前缀自动添加
+            - prefixOverrides 前缀自动去除
+            - suffix 后缀自动添加
+            - suffixOverrides 后缀自动去除
+         Notice: 此处AND应该被自动去除 - 所以使用 prefixOverrides="AND"
+            SELECT * FROM smbms_user WHERE (AND) userName LIKE CONCAT('' ,#{userName} , '')
+    -->
+    <select id="list_trim" resultType="User">
+        SELECT * FROM smbms_user
+        <trim prefix="WHERE 1=1" prefixOverrides="AND">
+            <if test="userName != null and userName != ''">
+                AND userName LIKE CONCAT('%',#{userName}, '%')
+            </if>
+            <if test="userRole != null and userRole != 0">
+                AND userRole = #{userRole}
+            </if>
+        </trim>
+    </select>
+    <!-- Demo11.2 Mybatis 动态SQL - trim 代替 set
+         Notice: 此处末尾添加 WHERE id =#{id} - 也可以不写在suffix中, 可以直接在<trim>后面添加
+    -->
+    <update id="updateUser_trim">
+        UPDATE smbms_user
+        <trim prefix="SET" suffixOverrides="," suffix="WHERE id=#{id}">
+            <if test="userCode != null and userCode != ''">
+                userCode=#{userCode},
+            </if>
+            <if test="userName != null and userName != ''">
+                userName=#{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                userPassword=#{userPassword},
+            </if>
+        </trim>
+    </update>
+    <!-- Demo11.3 Mybatis 动态SQL - trim 动态处理指定内容 -->
+    <insert id="addUser_trim">
+        INSERT INTO smbms_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userCode != null and userCode != ''">
+                userCode,
+            </if>
+            <if test="userName != null and userName != ''">
+                userName,
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                userPassword,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="userCode != null and userCode != ''">
+                #{userCode},
+            </if>
+            <if test="userName != null and userName != ''">
+                #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                #{userPassword},
+            </if>
+        </trim>
+    </insert>
 </mapper>
