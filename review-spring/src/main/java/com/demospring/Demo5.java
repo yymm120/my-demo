@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Demo5 {
     public static void main(String[] args) throws JsonProcessingException {
-        ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("applicationContext-IOC(DI).xml");
         TestEntity entity = (TestEntity) application.getBean("entity");
         String entityJsonString = new ObjectMapper().writeValueAsString(entity);
         System.out.println(entityJsonString);

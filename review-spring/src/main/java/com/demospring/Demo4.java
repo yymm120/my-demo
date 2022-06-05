@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Demo4 依赖注入的方式
  */
 public class Demo4 {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext-IOC(DI).xml");
 
     /*
     * <!--1.设值注入，通过set方法注入-->

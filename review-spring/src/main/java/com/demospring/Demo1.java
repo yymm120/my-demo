@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Demo1 {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("applicationContext-IOC(DI).xml");
         application.getBean("user"); // singleton单例
         application.getBean("role"); // prototype原型
         application.close();

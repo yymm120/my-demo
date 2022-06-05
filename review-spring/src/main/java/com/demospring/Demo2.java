@@ -14,7 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 切面编程
  */
 public class Demo2 {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext-AOP.xml");
 
     /** Demo2 - Sprint, test1方法在applicationContext.xml中配置了AOP*/
     @Test
