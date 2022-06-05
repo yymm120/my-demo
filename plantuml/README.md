@@ -329,8 +329,8 @@ package "Classic Collections" #DDDDDD {
 }
 
 package net.sourceforge.plantuml {
-  Object <|-- Demo1
-  Demo1 *- Demo2
+  Object <|-- com.demomybatis.Demo1
+  com.demomybatis.Demo1 *- com.demomybatis.Demo2
 }
 
 @enduml

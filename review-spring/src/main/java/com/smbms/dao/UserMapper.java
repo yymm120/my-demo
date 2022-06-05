@@ -26,21 +26,26 @@ public interface UserMapper {
     /** 3. 传一个复杂参数 - JavaBean */
     List<User> findList5(User user);
 
-    /** Demo5.1 CRUD - create */
+    /** com.demomybatis.Demo5.1 CRUD - create */
     int addUser(User user);
 
-    /** Demo5.2 CRUD - delete */
+    /** com.demomybatis.Demo5.2 CRUD - delete */
     int delUser(int id);
 
-    /** Demo5.3 CRUD - update*/
+    /** com.demomybatis.Demo5.3 CRUD - update*/
     int updUser(User user);
 
-    /** Demo5.4 resultMap 自定义映射结果*/
+    /** com.demomybatis.Demo5.4 resultMap 自定义映射结果*/
     List<User> findAllResultMap();
 
-    /* Demo6 association 定义一对一关系*/
+    /* com.demomybatis.Demo6 association 定义一对一关系*/
     List<User> findAllUserForRoleInfo();
 
-    /** Demo7 collection 定义一对多关系 */
+    /** com.demomybatis.Demo7 collection 定义一对多关系 */
     List<User> findAllUserForAddresses();
+
+    /* Demo9 动态SQL - <if> */
+    List<User> list1(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
+    /* Demo9 动态SQL - <where> <if>*/
+    List<User> list2(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
 }

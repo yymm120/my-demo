@@ -1,3 +1,5 @@
+package com.demomybatis;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smbms.dao.UserMapper;
 import com.smbms.pojo.User;

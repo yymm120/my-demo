@@ -43,32 +43,32 @@
         SELECT * FROM smbms_user WHERE userName LIKE CONCAT('%', #{userName}, '%') AND phone = #{phone}
     </select>
 
-    <!-- Demo5.1 CRUD - create, id=addUser-->
+    <!-- com.demomybatis.Demo5.1 CRUD - create, id=addUser-->
     <insert id="addUser">
         INSERT INTO smbms_user(userName, userCode, userPassword) VALUES(#{userName}, #{userCode}, #{userPassword})
     </insert>
 
-    <!-- Demo5.2 CRUD - delete, id=delUser-->
+    <!-- com.demomybatis.Demo5.2 CRUD - delete, id=delUser-->
     <delete id="delUser">
         DELETE FROM smbms_user WHERE id=#{id}
     </delete>
-    <!-- Demo5.3 CRUD - update, id=updUser-->
+    <!-- com.demomybatis.Demo5.3 CRUD - update, id=updUser-->
     <update id="updUser">
         UPDATE smbms_user SET userName=#{userName}, userCode=#{userCode}, userPassword=#{userPassword} WHERE id=#{id}
     </update>
 
-    <!--Demo5.4 自定义结果映射, resultMap-->
+    <!--com.demomybatis.Demo5.4 自定义结果映射, resultMap-->
     <select id="findAllResultMap" resultMap="userMap">
         SELECT u.*, r.roleName FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
     </select>
 
-    <!--Demo5.4 resultMap - userMap-->
+    <!--com.demomybatis.Demo5.4 resultMap - userMap-->
     <resultMap id="userMap" type="User">
         <!-- db中roleName字段, 映射为User中的userRoleName字段 -->
         <result column="roleName" property="userRoleName"/>
     </resultMap>
 
-    <!--Demo6.1 association 一对一, 查询所有用户对应的角色信息-->
+    <!--com.demomybatis.Demo6.1 association 一对一, 查询所有用户对应的角色信息-->
     <select id="findAllUserForRoleInfo" resultMap="userAndRoleMap">
         SELECT *,
                r.id rId,
@@ -79,7 +79,7 @@
         FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
     </select>
 
-    <!-- Demo6.1 association子元素, 定义一对一关系, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射-->
+    <!-- com.demomybatis.Demo6.1 association子元素, 定义一对一关系, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射-->
     <resultMap id="RoleMap" type="Role">
         <!-- 子元素id: 通常为主键id, 定义该子元素可以查询提高性能 -->
         <id column="rId" property="id"/>
@@ -95,7 +95,7 @@
         <association property="role" resultMap="RoleMap"/>
     </resultMap>
 
-    <!-- Demo7 collection 子元素定义 一对多关系 -->
+    <!-- com.demomybatis.Demo7 collection 子元素定义 一对多关系 -->
     <select id="findAllUserForAddresses">
         SELECT *,
                a.id aId,
@@ -106,7 +106,7 @@
         FROM smbms_user u LEFT JOIN smbms_address a ON u.id = a.userId
     </select>
     <!--
-        Demo7 collection 定义一对多关系时, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射
+        com.demomybatis.Demo7 collection 定义一对多关系时, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射
               查询结果会被Mybatis折叠, 与SQL语句查询到的结果数量不一致
     -->
     <resultMap id="userAndAddressMap" type="User">
@@ -124,5 +124,27 @@
     </resultMap>
 
 
-
+    <!-- Demo9.1 Mybatis 动态SQL - if-->
+    <!-- Notice test="condition"-->
+    <select id="list1" resultType="User">
+        SELECT  * FROM smbms_user WHERE 1=1
+        <if test="userName != null and userName != ''">
+            AND userName LIKE CONCAT('%',#{userName}, '%')
+        </if>
+        <if test="userRole != null and userRole != 0">
+            AND userRole = #{userRole}
+        </if>
+    </select>
+    <!-- Demo9.2 Mybatis 动态SQL - where-->
+    <select id="list2" resultType="User">
+        SELECT  * FROM smbms_user
+        <where>
+            <if test="userName != null and userName != ''">
+                AND userName LIKE CONCAT('%',#{userName}, '%')
+            </if>
+            <if test="userRole != null and userRole != 0">
+                AND userRole = #{userRole}
+            </if>
+        </where>
+    </select>
 </mapper>

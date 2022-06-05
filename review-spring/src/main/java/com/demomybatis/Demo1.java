@@ -1,3 +1,5 @@
+package com.demomybatis;
+
 import com.smbms.pojo.User;
 import com.smbms.util.MyBatisUtil;
 import org.apache.ibatis.io.Resources;
