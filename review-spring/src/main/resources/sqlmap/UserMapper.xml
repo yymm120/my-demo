@@ -147,4 +147,21 @@
             </if>
         </where>
     </select>
+
+    <!-- Demo10 Mybatis 动态SQL - set, Notice: there are commas, the set tag can trim a comma automatic-->
+    <update id="updateUserForDynamicSQL">
+            UPDATE smbms_user
+            <set>
+                <if test="userCode != null and userCode != ''">
+                    userCode=#{userCode},
+                </if>
+                <if test="userName != null and userName != ''">
+                    userName=#{userName},
+                </if>
+                <if test="userPassword != null and userPassword != ''">
+                    userPassword=#{userPassword},
+                </if>
+            </set>
+            WHERE id=#{id}
+    </update>
 </mapper>

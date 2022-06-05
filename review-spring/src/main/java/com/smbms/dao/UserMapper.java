@@ -48,4 +48,6 @@ public interface UserMapper {
     List<User> list1(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
     /* Demo9 动态SQL - <where> <if>*/
     List<User> list2(@Param("userName") String userName1, @Param("userRole") Integer userRole1);
+
+    int updateUserForDynamicSQL(User user);
 }
