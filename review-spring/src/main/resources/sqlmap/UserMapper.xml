@@ -56,6 +56,13 @@
     <select id="findAllResultMap" resultMap="userMap">
         SELECT u.*, r.roleName FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
     </select>
+
+    <!--Demo5.4 resultMap - userMap-->
+    <resultMap id="userMap" type="User">
+        <!-- db中roleName字段, 映射为User中的userRoleName字段 -->
+        <result column="roleName" property="userRoleName"/>
+    </resultMap>
+
     <!--Demo6.1 association 一对一, 查询所有用户对应的角色信息-->
     <select id="findAllUserForRoleInfo" resultMap="userAndRoleMap">
         SELECT *,
@@ -67,12 +74,7 @@
         FROM smbms_user u LEFT JOIN smbms_role r ON u.userRole = r.id
     </select>
 
-    <!--Demo5.4 resultMap - userMap-->
-    <resultMap id="userMap" type="User">
-        <!-- db中roleName字段, 映射为User中的userRoleName字段 -->
-        <result column="roleName" property="userRoleName"/>
-    </resultMap>
-    <!-- Demo6.1 association子元素, 定义一对一关系-->
+    <!-- Demo6.1 association子元素, 定义一对一关系, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射-->
     <resultMap id="RoleMap" type="Role">
         <!-- 子元素id: 通常为主键id, 定义该子元素可以查询提高性能 -->
         <id column="rId" property="id"/>
@@ -87,5 +89,35 @@
         <!-- association映射数据到一个对象上-->
         <association property="role" resultMap="RoleMap"/>
     </resultMap>
+
+    <!-- Demo7 collection 子元素定义 一对多关系 -->
+    <select id="findAllUserForAddresses">
+        SELECT *,
+               a.id aId,
+               a.createBy aCreateBy,
+               a.creationDate aCreationDate,
+               a.modifyBy aModifyBy,
+               a.modifyDate aModifyDate
+        FROM smbms_user u LEFT JOIN smbms_address a ON u.id = a.userId
+    </select>
+    <!--
+        Demo7 collection 定义一对多关系时, 自动映射会被取消, 映射级别需要提升到FULL才能继续自动映射
+              查询结果会被Mybatis折叠, 与SQL语句查询到的结果数量不一致
+    -->
+    <resultMap id="userAndAddressMap" type="User">
+        <id column="id" property="id"/>
+        <!-- collection 子元素 映射数据到集合(List, Set)  -->
+        <collection property="addressList" resultMap="addressMap"/>
+    </resultMap>
+    <!-- Address 映射结果-->
+    <resultMap id="addressMap" type="Address">
+        <id column="aId" property="id" />
+        <result column="aCreateBy" property="createBy"/>
+        <result column="aCreationDate" property="creationDate"/>
+        <result column="aModifyBy" property="modifyBy"/>
+        <result column="aModifyDate" property="modifyDate"/>
+    </resultMap>
+
+
 
 </mapper>

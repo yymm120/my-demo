@@ -38,5 +38,9 @@ public interface UserMapper {
     /** Demo5.4 resultMap 自定义映射结果*/
     List<User> findAllResultMap();
 
+    /* Demo6 association 定义一对一关系*/
     List<User> findAllUserForRoleInfo();
+
+    /** Demo7 collection 定义一对多关系 */
+    List<User> findAllUserForAddresses();
 }

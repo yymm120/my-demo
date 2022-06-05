@@ -9,8 +9,8 @@
     <properties resource="database.properties"/>
     <!-- 设置 -->
     <settings>
-        <!-- 映射级别 -->
-        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!-- 映射级别, NONE标表示不进行自动映射, PARTIAL表示部分自动映射(嵌套查询的时候不自动映射), FULL表示全都自动映射(包括association等嵌套查询) -->
+        <setting name="autoMappingBehavior" value="FULL"/>
         <!-- 日志 -->
         <setting name="logImpl" value="LOG4J"/>
     </settings>

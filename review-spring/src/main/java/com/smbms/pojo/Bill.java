@@ -1,7 +1,14 @@
 package com.smbms.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Bill {
     private Long id;
     private String billCode;
@@ -17,107 +24,4 @@ public class Bill {
     private Date modifyDate;
     private Long providerId;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getBillCode() {
-        return billCode;
-    }
-
-    public void setBillCode(String billCode) {
-        this.billCode = billCode == null ? null : billCode.trim();
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
-    }
-
-    public String getProductDesc() {
-        return productDesc;
-    }
-
-    public void setProductDesc(String productDesc) {
-        this.productDesc = productDesc == null ? null : productDesc.trim();
-    }
-
-    public String getProductUnit() {
-        return productUnit;
-    }
-
-    public void setProductUnit(String productUnit) {
-        this.productUnit = productUnit == null ? null : productUnit.trim();
-    }
-
-    public Double getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Double productCount) {
-        this.productCount = productCount;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public Integer getIsPayment() {
-        return isPayment;
-    }
-
-    public void setIsPayment(Integer isPayment) {
-        this.isPayment = isPayment;
-    }
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Long getModifyBy() {
-        return modifyBy;
-    }
-
-    public void setModifyBy(Long modifyBy) {
-        this.modifyBy = modifyBy;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
-
-    public Long getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(Long providerId) {
-        this.providerId = providerId;
-    }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * pojo映射数据表
@@ -31,4 +32,7 @@ public class User {
 
     /** association 定义一对一关系 */
     private Role role;
+
+    /** collection 定义一对多关系 */
+    private List<Address> addressList;
 }
