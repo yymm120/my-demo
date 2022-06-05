@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
@@ -39,4 +40,26 @@
             <!--*:被pointcut切点匹配的所有方法完成并返回后, 都会执行log对象的afterReturning()方法 -->
         </aop:aspect>
     </aop:config>
+
+    <!--SpringDemo4.1.设值注入，通过set方法注入-->
+    <bean id="user1" class="com.smbms.pojo.User">
+        <property name="userName" value="张三"/>
+        <property name="phone" value="181920100000"/>
+        <!--注入对象-->
+        <property name="role" ref="role1" />
+    </bean>
+    <bean id="role1" class="com.smbms.pojo.Role">
+        <property name="roleCode" value="13566667777"/>
+        <property name="roleName" value="李四"/>
+    </bean>
+    <!--SpringDemo4.2.构造注入，通过构造方法注入，可以通过index指定参数下标、或者type指定参数类型-->
+    <bean id="user2" class="com.smbms.pojo.User">
+        <constructor-arg type="com.smbms.pojo.Role" ref="role1"/>
+        <constructor-arg type="java.lang.String" value="张三2"/>
+        <constructor-arg type="java.lang.String" value="13566669999"/>
+    </bean>
+    <!--SpringDemo4.3.p命名空间注入，通过set方法注入-->
+    <bean id="user3" class="com.smbms.pojo.User"
+          p:userName="赵六" p:phone="119191919" p:role-ref="role1"
+    />
 </beans>
