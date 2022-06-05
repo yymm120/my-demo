@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
 
@@ -12,4 +12,29 @@
         <property name="userName" value="罗" />
     </bean>
     <bean id="role" class="com.smbms.pojo.Role" scope="prototype"/>
+
+    <!--AOP面向切面编程》》》》》》》》》》》》》》》》》》》》》》》-->
+
+    <!--SpringDemo2.1 - 目标对象, 该对象中的方法可以通过切点进行匹配-->
+    <bean id="userService" class="com.demospring.service.impl.UserServiceImpl"/>
+
+    <!--SpringDemo2.2 - 切面类, 该对象中的可以定义需要增强的方法, 方法名通常以before, after开头 -->
+    <bean id="log" class="com.demospring.aop.Log"/>
+
+    <!--SpringDemo2.3 - AOP配置, 配置切点, 切面 -->
+    <aop:config>
+        <!--切点-->
+        <aop:pointcut id="pointcut" expression="execution(* com.smbms.service..*.*(..))"/>
+        <!-- *:任意返回值类型, service..:service包及子包下任意类型 .*:任意方法 (..):任意参数 -->
+
+        <!--切面-->
+        <aop:aspect ref="log">
+            <!--前置增强-->
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <!--*:被pointcut切点匹配的所有方法执行前, 都会先执行切面log对象的before()方法 -->
+            <!--后置增强-->
+            <aop:after-returning method="afterReturning" pointcut-ref="pointcut"/>
+            <!--*:被pointcut切点匹配的所有方法完成并返回后, 都会执行log对象的afterReturning()方法 -->
+        </aop:aspect>
+    </aop:config>
 </beans>
