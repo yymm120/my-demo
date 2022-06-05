@@ -1,36 +1,34 @@
 package com.demospring.aop;
 
 
-
-
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.aspectj.lang.JoinPoint;
 
 public class Log {
 
-    private long start;
-
+    private Logger logger = LogManager.getLogger(Log.class.getName());
     /**
      * 前置增强
      */
-    public void before() {
-        //获取当前时间戳（当前时间距离1970年1月1日0），单位：毫秒数
-        start = System.currentTimeMillis();
-
-        Double time = Math.random() * 100;
-        try {
-            Thread.sleep(time.longValue());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("方法执行前时间戳：" + start);
+    public void before(JoinPoint joinPoint) {
+        showLogInfo(joinPoint);
     }
 
     /**
      * 后置增强
      */
-    public void afterReturning() {
-        long end = System.currentTimeMillis();
-        System.out.println("方法执行后时间戳：" + end);
-        System.out.println("执行耗时：" + (end - start));
+    public void afterReturning(JoinPoint joinPoint, Object result) {
+        System.out.println("目标方法的返回值: " + result);
+        showLogInfo(joinPoint);
+    }
+
+    private void showLogInfo(JoinPoint joinPoint) {
+        /* 获取目标对象 */
+        logger.info(joinPoint.getTarget());
+        /* 获取参数 */
+        logger.info(joinPoint.getArgs());
+        /* 获取方法签名 */
+        logger.info(joinPoint.getSignature().getName());
     }
 }
