@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+    <!--SpringDemo1 - IOC(DI) scope: singleton(默认单例), prototype(多例原型)-->
+    <!--IOC,创建Hello对象存入Spring容器，唯一标识为hello-->
+    <bean id="user" class="com.smbms.pojo.User" scope="singleton">
+        <!--设置属性值-->
+        <property name="userName" value="罗" />
+    </bean>
+    <bean id="role" class="com.smbms.pojo.Role" scope="prototype"/>
+
+
+
+    <!--SpringDemo4.1.设值注入，通过set方法注入-->
+    <bean id="user1" class="com.smbms.pojo.User">
+        <property name="userName" value="张三"/>
+        <property name="phone" value="181920100000"/>
+        <!--注入对象-->
+        <property name="role" ref="role1" />
+    </bean>
+    <bean id="role1" class="com.smbms.pojo.Role">
+        <property name="roleCode" value="13566667777"/>
+        <property name="roleName" value="李四"/>
+    </bean>
+    <!--SpringDemo4.2.构造注入，通过构造方法注入，可以通过index指定参数下标、或者type指定参数类型-->
+    <bean id="user2" class="com.smbms.pojo.User">
+        <constructor-arg type="com.smbms.pojo.Role" ref="role1"/>
+        <constructor-arg type="java.lang.String" value="张三2"/>
+        <constructor-arg type="java.lang.String" value="13566669999"/>
+    </bean>
+    <!--SpringDemo4.3.p命名空间注入，通过set方法注入-->
+    <bean id="user3" class="com.smbms.pojo.User"
+          p:userName="赵六" p:phone="119191919" p:role-ref="role1"
+    />
+
+    <!-- =========IOC注入=========-->
+    <!--SpringDemo5. DI - 不同数据类型的注入-->
+    <bean id="entity" class="com.smbms.pojo.TestEntity">
+        <!-- 1.specialCharacter1: 使用<![CDATA[]]>标记处理XML特殊字符 "P&< >G" -->
+        <property name="specialCharacter1"><value><![CDATA[P&> <G]]></value></property>
+        <!-- 2.specialCharacter2: 将XML特殊字符替换为实体引用 "&gt;"-->
+        <property name="specialCharacter2" value="P&amp;&gt; &lt;G"/>
+        <!-- 3.innerBean: 注入bean除了SpringDemo4中展示的三种方式外, 还可以定义内部bean-->
+        <property name="innerBean">
+            <bean class="com.smbms.pojo.User">
+                <property name="userName" value="罗"/>
+            </bean>
+        </property>
+        <!-- 4.list: 注入List直接使用list标签-->
+        <property name="list">
+            <list><value>足球</value></list>
+            <list><value>篮球</value></list>
+        </property>
+        <!-- 5.array: 注入数组类型和List类型是一样的-->
+        <property name="array">
+            <list><value>足球</value></list>
+            <list><value>篮球</value></list>
+        </property>
+        <!-- 6.set: 注入set类型直接使用set标签-->
+        <property name="set">
+            <set>
+                <value>足球</value>
+                <value>篮球</value>
+            </set>
+        </property>
+        <!-- 7.map: 注入Map类型直接使用Map标签-->
+        <property name="map">
+            <map>
+                <entry key="football" value="足球" />
+                <entry key="basketball" value="篮球" />
+            </map>
+        </property>
+        <!-- 8.properties: 注入Properties直接使用prop标签-->
+        <property name="props">
+            <props>
+                <prop key="football">足球</prop>
+                <prop key="basketball">篮球</prop>
+            </props>
+        </property>
+        <!-- 9.空字符串: 注入空字符串和注入null值是不同的-->
+        <property name="emptyValue" value=""/>
+        <!-- 10.null: 注入null值需要使用<null/>标签-->
+        <property name="nullValue"><null/></property>
+    </bean>
+</beans>
