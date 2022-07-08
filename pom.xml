@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <groupId>com.example</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
+    <artifactId>my-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>my-demo</name>
+    <description>my-demo</description>
+
     <modules>
-        <module>demo1-java8</module>
+        <module>common</module>
         <module>demo2-design</module>
         <module>demo3-transaction</module>
         <module>demo4-webflux</module>
@@ -15,8 +22,13 @@
         <module>demo9-mq</module>
         <module>demoA1-alg</module>
         <module>review-spring</module>
-        <module>plantuml</module>
+        <module>demo1-java8</module>
+        <module>demo-work</module>
+        <module>mytest</module>
+        <!--        <module>android-test</module>-->
     </modules>
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -24,11 +36,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.example</groupId>
-    <artifactId>spring-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-demo</name>
-    <description>spring-demo</description>
+
     <properties>
         <java.version>1.8</java.version>
         <spring.version>2.5.8</spring.version>
@@ -97,6 +105,14 @@
                 <artifactId>guava</artifactId>
                 <version>22.0</version>
             </dependency>
+
+<!--            &lt;!&ndash; https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>androidx.test.uiautomator</groupId>-->
+<!--                <artifactId>uiautomator</artifactId>-->
+<!--                <version>2.2.0</version>-->
+<!--            </dependency>-->
+
         </dependencies>
     </dependencyManagement>
 
@@ -104,6 +120,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

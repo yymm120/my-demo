@@ -9,25 +9,34 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>review-spring</artifactId>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
+    <artifactId>android-test</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <!-- https://mvnrepository.com/artifact/androidx.test/core -->
+<!--        <dependency>-->
+<!--            <groupId>androidx.test</groupId>-->
+<!--            <artifactId>core</artifactId>-->
+<!--            <version>1.2.0</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator -->
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.7</version>
+            <groupId>androidx.test.uiautomator</groupId>
+            <artifactId>uiautomator</artifactId>
+            <version>2.2.0</version>
         </dependency>
 
+
     </dependencies>
+
+
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
 </project>
