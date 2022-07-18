@@ -12,6 +12,69 @@
     <artifactId>demo01-mylist</artifactId>
 
 
+    <dependencies>
+
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除掉默认支持的 Tomcat -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-webflux</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 添加 Undertow 容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.xnio</groupId>
+                    <artifactId>xnio-nio</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <version>3.8.7.Final</version>
+        </dependency>
+
+        <!-- undertow 三个基础依赖-->
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>2.2.14.Final</version>
+        </dependency>
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.undertow/undertow-core &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.undertow</groupId>-->
+<!--            <artifactId>undertow-core</artifactId>-->
+<!--            <version>2.2.14.Final</version>-->
+<!--        </dependency>-->
+
+
+<!--        <dependency>-->
+<!--            <groupId>io.undertow</groupId>-->
+<!--            <artifactId>undertow-websockets-jsr</artifactId>-->
+<!--            <version>2.2.14.Final</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;&ndash;&gt;-->
+
+
+
+    </dependencies>
+
 
 
 </project>

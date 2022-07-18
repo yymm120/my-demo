@@ -18,6 +18,8 @@
         <module>review-spring</module>
         <module>plantuml</module>
         <module>demofg</module>
+        <module>demo10-log</module>
+        <module>demo11-juc</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,10 +29,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>spring-demo</artifactId>
+    <artifactId>my-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-demo</name>
-    <description>spring-demo</description>
+    <name>my-demo</name>
+    <description>my-demo</description>
     <properties>
         <java.version>1.8</java.version>
         <spring.version>2.5.8</spring.version>
@@ -83,6 +85,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.10</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.platform</groupId>
