@@ -1,0 +1,19 @@
+
+
+server:
+  port: 8442
+  undertow:
+    accesslog:
+      enabled: true # 打开undertow日志
+      dir: demofg/demo01-mylist/logs # 日志所在目录
+      pattern: common
+      prefix: access_log
+      suffix: log
+    threads:
+      io: 8 # IO线程个数, 默认为2或者CPU个数
+      worker: 64 # 工作线程个数, 默认为IO线程个数的8倍
+    max-http-post-size: 0 # 设置Http post内容的最大长度, 默认不做限制
+    buffer-size: 1024
+    direct-buffers: true
+
+

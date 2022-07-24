@@ -7,7 +7,7 @@ import com.example.mylist.service.impl.MyListItemRequest;
 
 public interface MyListAction {
 
-    MyListResponse updateQty();
+    MyListResponse updateQty(String a);
 
     MyListResponse addItemToCart();
 
