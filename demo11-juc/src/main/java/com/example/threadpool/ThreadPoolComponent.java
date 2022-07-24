@@ -151,7 +151,8 @@ public class ThreadPoolComponent {
                 workQueue,
                 Executors.defaultThreadFactory(),
                 handler);
-        return TtlExecutors.getTtlExecutorService(threadPool);
+        return threadPool;
+        // return TtlExecutors.getTtlExecutorService(threadPool);
     }
 
     /**
