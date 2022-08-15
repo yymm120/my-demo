@@ -3,8 +3,6 @@ package com.smbms.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class User {
     private String userRoleName; //角色名称
 
     /** association 定义一对一关系 */
-    private Role role;
+    public Role role;
 
     /** collection 定义一对多关系 */
     private List<Address> addressList;
