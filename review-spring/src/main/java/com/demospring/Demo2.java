@@ -32,3 +32,6 @@ public class Demo2 {
         int delCount = userService.delUser(16);
     }
 }
+
+
+

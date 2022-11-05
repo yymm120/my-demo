@@ -4,7 +4,6 @@ import com.example.java8demo.lambda.compare.UserCompare;
 import com.example.java8demo.pojo.User;
 import com.google.common.base.Stopwatch;
 import lombok.SneakyThrows;
-import lombok.var;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
