@@ -25,8 +25,8 @@ public class Person {
     @Size(min = 3, max = 5)
     private List<String> hobbies;
 
-    // 级联校验
-    @Valid
-    @NotNull
-    private Child child;
+    // // 级联校验
+    // @Valid
+    // @NotNull
+    // private Child child;
 }
