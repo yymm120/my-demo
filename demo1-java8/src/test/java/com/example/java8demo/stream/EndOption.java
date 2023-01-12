@@ -38,8 +38,9 @@ public class EndOption {
 		list.add(new User(2, "B"));
 		list.add(new User(3, "C"));
 		list.add(new User(4, "D"));
-		new Scanner(System.in).nextInt();
+		// new Scanner(System.in).nextInt();
 	}
+
 
 	/**
 	 * foreach
@@ -49,30 +50,45 @@ public class EndOption {
 		list.forEach(user -> System.out.println(user.getName()));
 	}
 
-	/**
-	 * collect
-	 * @see MidOptions#test7Reduce1()
-	 */
-	@Test
-	void test2() {
-		// ① toList
-		List<String> l = list.stream().map(User::getName)
-				.collect(Collectors.toList());
 
+	@Test
+	void test2ToSet() {
 		// ② toSet
 		Set<String> s = list.stream().map(User::getName)
 				.collect(Collectors.toSet());
+	}
+
+
+	@Test
+	void test3ToList() {
+		// ① toList
+		List<String> l = list.stream().map(User::getName)
+				.collect(Collectors.toList());
+	}
+
+
+	@Test
+	void test2ToMap() {
+		/*
+		@param1: 生成key的Function			- keyMapper
+		@param2: 生成value的function			- valueMapper
+		@param3: 合并相同key的对象的function 	- mergeFunction
+		@param3: 生成
+		 */
 		// ③ toMap
 		Map<String, User> map = list.stream()
 				.collect(Collectors.toMap(User::getName, Function.identity(), (k1, k2) -> k2));
-//		Map<String, Integer> map1 = list.stream()
-//				.collect(Collectors.toMap(User::getName, User::getAge));
+
+		// 为了避免重复键的冲突，我们传递merge函数，否则它将抛出illeglastateException
+		// Map<String, Integer> map1 = list.stream()
+		// 		.collect(Collectors.toMap(User::getName, User::getAge));
 		Map<String, User> map2 = list.stream()
 				.collect(Collectors.toMap(User::getName, Function.identity(), (k1, k2) -> k1));
 
 		// ④ reduce 也是一个end操作
 
 		System.out.println(map);
+		// System.out.println(map1);
 		System.out.println(map2);
 	}
 }

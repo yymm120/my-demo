@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Demo05Slf4j {
 
     /**
@@ -53,5 +56,33 @@ public class Demo05Slf4j {
     void testSlf4j_03(){
         Logger logger = LoggerFactory.getLogger("a");
         logger.info("logback");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
+    void test2() {
+        Logger logger = LoggerFactory.getLogger("test");
+
+        List<String> groups = Arrays.asList("a", "b");
+        groups.stream().map(c -> {
+            logger.info("" + c);
+            return c;
+        });
+        // logger.info("" + groups);
     }
 }

@@ -75,4 +75,9 @@ public class Demo01Jackson2HttpTest {
 
     }
 
+    @Test
+    void test3() {
+        // boolean a = (boolean) null;
+    }
+
 }

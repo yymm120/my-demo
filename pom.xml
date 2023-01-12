@@ -12,7 +12,6 @@
 
     <modules>
         <module>common</module>
-        <module>common</module>
         <module>demo2-design</module>
         <module>demo3-transaction</module>
         <module>demo4-webflux</module>
@@ -42,11 +41,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.example</groupId>
-    <artifactId>my-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>my-demo</name>
-    <description>my-demo</description>
 
     <properties>
         <java.version>1.8</java.version>
