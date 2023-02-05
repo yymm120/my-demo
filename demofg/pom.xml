@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo01-mylist</module>
+        <module>demo02-pixel</module>
     </modules>
 
 
