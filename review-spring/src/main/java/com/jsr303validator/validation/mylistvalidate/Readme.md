@@ -1,4 +1,4 @@
-Ferguson - MyList story - Validate
+Fer - MyList story - Validate
 
 ### 背景
 

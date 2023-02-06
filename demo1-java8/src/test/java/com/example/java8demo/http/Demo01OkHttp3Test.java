@@ -95,7 +95,7 @@ public class Demo01OkHttp3Test {
 
     @Test
     void test02(){
-        Request request = buildRequest("http://www.localdev.ferguson.com/misc/ajax/shareListDetailModal.jsp?giftListId=gl28960027&_=1658900366027", JSON, null);
+        Request request = buildRequest("http://www.localdev.fe.com/misc/ajax/shareListDetailModal.jsp?giftListId=gl28960027&_=1658900366027", JSON, null);
         Response response = tryGetResponse(request);
         String text = getText(response);
     }
