@@ -23,9 +23,9 @@ public class MetaPixelTestDroplet {
 
     private EventRequest getEventRequest(APIContext context, int num) {
         UserData userData = new UserData()
-                .email(String.format("joe%s@eg.com", num));
-//                .clientIpAddress(clientIpAddress)
-//                .clientUserAgent(clientUserAgent);
+                .email(String.format("joe%s@eg.com", num))
+               .clientIpAddress("127.0.0.1")
+               .clientUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36");
 
         HashMap<String, String> customProperties = new HashMap<>();
         customProperties.put("custom1", "value2");
@@ -39,9 +39,9 @@ public class MetaPixelTestDroplet {
         pageViewEvent.eventName("Purchase")
                 .eventTime(System.currentTimeMillis() / 1000L)
                 .userData(userData)
-                .customData(customData);
+                .customData(customData)
+                .actionSource(ActionSource.website);
                 // .eventSourceUrl("http://jaspers-market.com/product/123")
-                // .actionSource(ActionSource.website);
 
         EventRequest eventRequest = new EventRequest(pixelId, context);
         eventRequest.addDataItem(pageViewEvent);
@@ -57,6 +57,7 @@ public class MetaPixelTestDroplet {
             throw new Exception(String.format("Missing required test config. Got pixel_id: '%s', access_token: '%s'", pixelId, accessToken));
         }
         APIContext context = new APIContext(accessToken);
+        APIContext.disableCrashReport();
         context.setLogger(System.out);
 
         EventRequest asyncRequest = getEventRequest(context, 1);
@@ -74,7 +75,18 @@ public class MetaPixelTestDroplet {
                 .get();
        System.out.println(String.format("Multiple Async Requests - OK: %s", asyncResponses));
         result = new ObjectMapper().writeValueAsString(asyncResponses);
-        wait(200);
+        wait(1000);
+        System.out.println("1000");
+        wait(1000);
+        System.out.println("1000");
+        wait(1000);
+        System.out.println("1000");
+        wait(1000);
+        System.out.println("1000");
+        wait(1000);
+        System.out.println("1000");
+        wait(1000);
+        System.out.println("1000");
     }
 
 }
