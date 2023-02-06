@@ -2,6 +2,6 @@ package model.demo01builder;
 
 public interface Item {
     public String name();
-    public Package packing();
+    public Packing packing();
     public float price();
 }
